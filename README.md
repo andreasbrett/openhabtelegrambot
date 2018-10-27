@@ -11,7 +11,10 @@ https://regulargeek.blogspot.com/2018/06/control-openhab-using-telegram-messenge
  - improved a bit upon security
  - the bot can now be limited to only talk to defined chat IDs
  - the bot can now be limited to control only defined openHAB items (regular expressions possible; check regex101.com)
- 
+ - item states can now be queried by providing item's name with wildcard (*) at the start or end
+	- ```STATE myitem*``` will list all items that start with __myitem__
+	- ```STATE *switch``` will list all items that end with __switch__
+
 ## application.properties
 
 Here are some examples on how to use the new attributes __allowedChatIDs__, __allowedItems__, __readOnlyItems__ and __dashItems__. Please remember you HAVE to define them for __openhabtelegrambot__ to run.

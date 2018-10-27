@@ -34,12 +34,14 @@ public class StateCommandParser implements SingleCommandParser {
             throw new CommandParseException("<b>Invalid message syntax</b>\nType <b>HELP STATE</b> to get proper syntax");
         }
         String itemName = parts[ITEM_NAME_POSITION];
-        ItemDTO dto = openHabItemsService.getItem(itemName);
 
-        if (dto == null) {
-            throw new CommandParseException("Item not found. Type 'ITEMS' to get list of known items. If item is not visible and is present in OpenHab type 'REFRESH' to reload items.");
-        }
+		if (!itemName.endsWith("*") && !itemName.startsWith("*")) {
+	        ItemDTO dto = openHabItemsService.getItem(itemName);
 
+    	    if (dto == null) {
+        	    throw new CommandParseException("Item not found. Type 'ITEMS' to get list of known items. If item is not visible and is present in OpenHab type 'REFRESH' to reload items.");
+        	}
+		}
     }
 
     @Override
